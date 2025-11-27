@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Component;
 
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -19,13 +18,13 @@ public class RealmAccessRoleConverter implements Converter<Jwt, Collection<Grant
 
     @Override
     public Collection<GrantedAuthority> convert(Jwt source) {
-        Map<String,Object> realmAccess = (Map<String,Object>)source.getClaims().get("realm_access");
-        if(realmAccess == null || !realmAccess.containsKey("roles")){
+        Map<String, Object> realmAccess = (Map<String, Object>) source.getClaims().get("realm_access");
+        if (realmAccess == null || !realmAccess.containsKey("roles")) {
             return Collections.emptyList();
         }
         List<String> roles = (List<String>) realmAccess.get("roles");
         return roles.stream()
-                .map( role -> new SimpleGrantedAuthority("ROLE_"+role)).collect(Collectors.toList());
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role)).collect(Collectors.toList());
 
     }
 }
