@@ -1,13 +1,14 @@
-
+DROP TABLE app.account;
 CREATE TABLE app.account
 (
 	id serial,
 	account_type character varying NOT NULL,
+	account_number character varying not null,
 	balance bigint,
-	customer_id integer,
+	customer int,
 	primary key(id),
-	foreign key (customer_id) references app.customer(id)
+	CONSTRAINT fx_customer FOREIGN KEY (customer) REFERENCES app.customer(id) ON DELETE CASCADE
 
-)
+);
 ALTER TABLE IF EXISTS app.account
     OWNER to keycloak_db_user;
