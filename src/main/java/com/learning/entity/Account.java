@@ -4,6 +4,7 @@ import com.learning.enums.AccountType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @Table("account")
+@EqualsAndHashCode(of = "id")
 public class Account {
     @Id
     private Integer id;

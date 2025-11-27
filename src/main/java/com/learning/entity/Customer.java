@@ -19,5 +19,5 @@ public class Customer {
     private String name;
     private Integer age;
     //@MappedCollection(idColumn = "customer_id")
-    private Set<Account> accountList ;
+    private Set<Account> accountSet;
 }

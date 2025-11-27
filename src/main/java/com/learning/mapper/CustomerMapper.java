@@ -17,9 +17,13 @@ public interface CustomerMapper {
     CustomerDto customerToCustomerDto(Customer cust);
 
     Customer customerDtoToCustomer(CustomerDto dto);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Customer patchCustomerDtoToCustomer(CustomerDto dto, @MappingTarget Customer existingCustomer);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Account patchAccountDtoToAccount(AccountDto accountDto, @MappingTarget Account existingAccount);
+
     AccountDto accountToAccountDto(Account acc);
 
     Account accountDtoToAccount(AccountDto accountDto);

@@ -16,7 +16,6 @@ import javax.sql.DataSource;
 public class ApplicationConfig extends AbstractJdbcConfiguration {
 
 
-
     @Bean
     NamedParameterJdbcOperations namedParameterJdbcOperations(DataSource dataSource) {
         return new NamedParameterJdbcTemplate(dataSource);

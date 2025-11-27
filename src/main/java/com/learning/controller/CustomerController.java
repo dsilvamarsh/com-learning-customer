@@ -23,7 +23,7 @@ public class CustomerController {
     @GetMapping(path = "/customer/{id}")
     public ResponseEntity<CustomerDto> getCustomer(@PathVariable("id") Integer id) {
         log.debug("Find customer with id {}", id);
-        log.debug("Recived data {}",custRepo.findById(id).get());
+        log.debug("Recived data {}", custRepo.findById(id).get());
         return ResponseEntity.ok(mapper.customerToCustomerDto(custRepo.findById(id).get()));
     }
 
@@ -32,19 +32,20 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> getCustomer(@RequestBody CustomerDto custDto) {
 
         log.debug("Recived customer with details {}", custDto);
-         custDto =custService.saveCustomer(custDto);
-        log.debug("Customer after saving to DB {}",custDto);
+        custDto = custService.saveCustomer(custDto);
+        log.debug("Customer after saving to DB {}", custDto);
 
         return ResponseEntity.ok(custDto);
 
     }
+
     @PreAuthorize("hasRole('writer') ")
     @PatchMapping(path = "/customer")
     public ResponseEntity<CustomerDto> pathcCustomer(@RequestBody CustomerDto custDto) {
 
         log.debug("Recived pathc customer with details {}", custDto);
-        custDto =custService.pathCustomer(custDto);
-        log.debug("Customer after saving to DB {}",custDto);
+        custDto = custService.pathCustomer(custDto);
+        log.debug("Customer after saving to DB {}", custDto);
 
         return ResponseEntity.ok(custDto);
 
@@ -53,9 +54,9 @@ public class CustomerController {
 
     @PreAuthorize("hasRole('writer')")
     @PostMapping(path = "/customer/{custId}/account")
-    public ResponseEntity<CustomerDto> saveAccount(@RequestBody AccountDto accountDto, @PathVariable Integer custId){
-        log.debug("Recived account information {}",accountDto);
-        CustomerDto custDto =custService.saveCustomer(accountDto,custId);
+    public ResponseEntity<CustomerDto> saveAccount(@RequestBody AccountDto accountDto, @PathVariable Integer custId) {
+        log.debug("Recived account information {}", accountDto);
+        CustomerDto custDto = custService.saveCustomer(accountDto, custId);
 
         return ResponseEntity.ok(custDto);
     }

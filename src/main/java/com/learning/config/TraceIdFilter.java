@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Component
 class TraceIdFilter extends OncePerRequestFilter {
-    
+
     private final Tracer tracer;
 
     TraceIdFilter(Tracer tracer) {
@@ -34,5 +34,5 @@ class TraceIdFilter extends OncePerRequestFilter {
         TraceContext context = this.tracer.currentTraceContext().context();
         return context != null ? context.traceId() : null;
     }
-    
+
 }

@@ -19,19 +19,20 @@ public class CustomSecurityConfig {
 
     @Value("${spring.security.oauth2.resourceserver.jwt.issuer-url}")
     private String issuerUri;
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws  Exception{
 
-            http.authorizeHttpRequests(
-                    authorize -> authorize.requestMatchers("/customer/*").authenticated()
-                            .anyRequest().authenticated()
-            ).oauth2ResourceServer(oauth2 -> oauth2
-                    .jwt(Customizer.withDefaults()));
-            return http.build();
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        http.authorizeHttpRequests(
+                authorize -> authorize.requestMatchers("/customer/*").authenticated()
+                        .anyRequest().authenticated()
+        ).oauth2ResourceServer(oauth2 -> oauth2
+                .jwt(Customizer.withDefaults()));
+        return http.build();
     }
 
     @Bean
-    public JwtAuthenticationConverter jwtAuthenticationConverter(RealmAccessRoleConverter realmAccessRoleConverter){
+    public JwtAuthenticationConverter jwtAuthenticationConverter(RealmAccessRoleConverter realmAccessRoleConverter) {
         JwtAuthenticationConverter convertor = new JwtAuthenticationConverter();
         convertor.setJwtGrantedAuthoritiesConverter(realmAccessRoleConverter);
         return convertor;
