@@ -11,4 +11,4 @@ CREATE TABLE app.account
 
 );
 ALTER TABLE IF EXISTS app.account
-    OWNER to keycloak_db_user;
+    OWNER to dev_user;
