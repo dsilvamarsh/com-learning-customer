@@ -7,4 +7,4 @@ CREATE TABLE app.customer
 );
 
 ALTER TABLE IF EXISTS app.customer
-    OWNER to keycloak_db_user;
+    OWNER to dev_user;
