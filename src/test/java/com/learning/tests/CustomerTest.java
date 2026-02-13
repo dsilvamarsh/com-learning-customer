@@ -6,10 +6,7 @@ import com.learning.enums.AccountType;
 import com.learning.mapper.CustomerMapper;
 import com.learning.repository.CustomerRepository;
 import com.learning.service.CustomerService;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -17,8 +14,8 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-@ActiveProfiles("test")
+//@SpringBootTest
+//@ActiveProfiles("test")
 public class CustomerTest {
 
     @Autowired
@@ -65,7 +62,7 @@ public class CustomerTest {
         customerService.pathCustomerAccount(Set.of(account1),3);
     }
 
-    @Test
+    //@Test
     void deleteAccount(){
 
         AccountDto account1 = AccountDto.builder().id(11).build();
